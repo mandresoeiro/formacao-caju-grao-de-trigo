@@ -48,7 +48,6 @@ window.CAJU_AULAS = [
     statusLabel: 'Aula disponível',
     resumo: 'A Eucaristia como fonte e ápice da vida da Igreja: presença real, transubstanciação, comunhão, reverência e frutos espirituais.',
     tema: 'dark',
-    pdf: 'assets/docs/aula-04-eucaristia.pdf',
     capa: {
       src640: 'assets/img/aulas/04/slide-01-640.webp',
       src1280: 'assets/img/aulas/04/slide-01-1280.webp',
@@ -189,7 +188,6 @@ window.CAJU_AULAS = [
     statusLabel: 'Aula disponível',
     resumo: 'Bem-aventuranças, Fé, Esperança e Caridade, além de Prudência, Justiça, Fortaleza e Temperança.',
     tema: 'light',
-    pdf: 'assets/docs/aula-05-bem-aventurancas-virtudes.pdf',
     secoes: [
       {
         id: 'bem-aventurancas',
@@ -267,7 +265,6 @@ window.CAJU_AULAS = [
     statusLabel: 'Aula disponível',
     resumo: 'Os Dez Mandamentos e os cinco preceitos eclesiásticos apresentados como colunas complementares da formação moral católica.',
     tema: 'light',
-    pdf: 'assets/docs/aula-06-mandamentos.pdf',
     capa: {
       src640: 'assets/img/aulas/06/lei-de-deus-preceitos-640.webp',
       src1280: 'assets/img/aulas/06/lei-de-deus-preceitos-1280.webp',
@@ -352,7 +349,6 @@ window.CAJU_AULAS = [
     statusLabel: 'Aula disponível',
     resumo: 'Natureza da oração, formas e expressões, combate espiritual, Pai-Nosso, Ave-Maria, Rosário e rotina orante.',
     tema: 'dark',
-    pdf: 'assets/docs/aula-07-oracao.pdf',
     secoes: [
       {
         id: 'o-que-e-oracao',
@@ -450,7 +446,6 @@ window.CAJU_AULAS = [
     statusLabel: 'Aula disponível',
     resumo: 'Chamado universal à santidade, santos como modelos e intercessores, canonização e testemunhos concretos de vida cristã.',
     tema: 'dark',
-    pdf: 'assets/docs/aula-08-santidade.pdf',
     secoes: [
       {
         id: 'chamado-universal',

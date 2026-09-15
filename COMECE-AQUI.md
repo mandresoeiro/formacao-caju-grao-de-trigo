@@ -9,7 +9,7 @@ Esta versão já está preparada para:
 - anotações privadas;
 - sugestões enviadas conscientemente pelo aluno;
 - uma única playlist católica do Spotify;
-- PDF original + aula acessível em HTML + imagens otimizadas.
+- Aula acessível em HTML + imagens otimizadas.
 
 ## O que ainda depende de você
 

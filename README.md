@@ -8,9 +8,7 @@ A página de cada aula agora possui três camadas complementares:
 
 1. **Conteúdo descritivo em HTML** — é a versão principal para estudo, busca, zoom, leitores de tela e celulares.
 2. **Artes e infográficos** — permanecem como apoio visual, convertidos para WebP responsivo e acompanhados por descrição textual.
-3. **PDF original** — continua preservado como documento-fonte, podendo ser aberto em nova aba ou carregado dentro da própria página sob demanda.
-
-O PDF nunca é a única forma de acessar a aula.
+3. **Texto em HTML** — a aula fica disponível de forma direta, pesquisável e confortável em celular, tablet e desktop.
 
 ## Sidebar
 
@@ -24,7 +22,6 @@ Na página de cada aula, a sidebar fixa reúne:
 - indicação da aula atual;
 - sumário da aula atual;
 - destaque automático da seção que está sendo lida;
-- acesso ao PDF original.
 
 No celular, a mesma sidebar vira um painel acessível aberto pelo botão **Menu da aula**.
 
@@ -88,7 +85,6 @@ Exemplo:
   statusLabel: 'Aula disponível',
   resumo: 'Resumo curto da aula.',
   tema: 'dark',
-  pdf: 'assets/docs/aula-09.pdf',
   capa: {
     src640: 'assets/img/aulas/09/capa-640.webp',
     src1280: 'assets/img/aulas/09/capa-1280.webp',
@@ -191,9 +187,9 @@ A informação importante da imagem também deve estar presente no HTML. A arte 
 
 A ordem de prioridade é:
 
-**HTML semântico → descrição textual → apoio visual → PDF original.**
+**HTML semântico → descrição textual → apoio visual.**
 
-Isso significa que uma pessoa que não consiga visualizar as artes ou usar o leitor de PDF ainda consegue estudar a aula completa pelo site.
+Isso significa que uma pessoa que não consiga visualizar as artes ainda consegue estudar a aula completa pelo texto do site.
 
 ---
 
@@ -208,7 +204,7 @@ A V4 acrescenta:
 - botão **Continuar de onde parei**;
 - progresso visual em cada card da home;
 - modo leitura;
-- tempo estimado de leitura, capítulos, recursos visuais e disponibilidade do PDF;
+- tempo estimado de leitura, capítulos e recursos visuais;
 - anotação privada em cada seção da aula;
 - área **Meu caderno da aula** com reflexão, dúvidas e sugestão;
 - exportação das anotações para Markdown;

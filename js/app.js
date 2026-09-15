@@ -334,8 +334,6 @@
 
     if ($('#stat-lessons')) $('#stat-lessons').textContent = lessons.length;
     if ($('#stat-published')) $('#stat-published').textContent = lessons.filter(l => l.status === 'publicada').length;
-    if ($('#stat-pdfs')) $('#stat-pdfs').textContent = lessons.filter(l => l.pdf).length;
-
     const publishedLessons = lessons.filter(l => l.status === 'publicada');
     const completedLessons = publishedLessons.filter(getCompleted);
     const journeyPercent = publishedLessons.length ? Math.round((completedLessons.length / publishedLessons.length) * 100) : 0;
@@ -369,7 +367,6 @@
       const primary = lesson.status === 'publicada'
         ? `<a class="btn" href="aula.html?id=${encodeURIComponent(lesson.numero)}${progress?.sectionId ? `#${encodeURIComponent(progress.sectionId)}` : ''}">${percent > 2 && percent < 98 ? `Continuar · ${Math.round(percent)}%` : 'Ler aula'}</a>`
         : `<span class="btn" aria-disabled="true">Em preparação</span>`;
-      const pdf = lesson.pdf ? `<a class="btn secondary" href="${escapeHTML(lesson.pdf)}" target="_blank" rel="noopener">PDF <span class="sr-only">original, abre em nova aba</span></a>` : '';
       const completion = completed ? '<span class="pill completion-pill">✓ Concluída</span>' : '';
 
       return `<article class="lesson-card" data-search="${escapeHTML(lessonSearchText(lesson))}">
@@ -380,7 +377,7 @@
           <p class="lesson-card-subtitle">${escapeHTML(lesson.subtitulo || '')}</p>
           <p>${escapeHTML(lesson.resumo)}</p>
           ${lesson.status === 'publicada' ? `<div class="card-progress" aria-label="Progresso da Aula ${escapeHTML(lesson.numero)}: ${Math.round(percent)}%"><span style="width:${percent}%"></span></div>` : ''}
-          <div class="card-actions">${primary}${pdf}</div>
+          <div class="card-actions">${primary}</div>
         </div>
       </article>`;
     }).join('');
@@ -423,10 +420,7 @@
   }
 
   function renderSidebar(lesson) {
-    const pdfActions = lesson.pdf
-      ? `<div class="sidebar-docs" aria-label="Documento original"><h2 class="sidebar-heading">Documento</h2><a class="sidebar-action" href="${escapeHTML(lesson.pdf)}" target="_blank" rel="noopener">Abrir PDF original <span class="sr-only">(abre em nova aba)</span></a><a class="sidebar-action" href="#pdf-original">Visualizar PDF nesta página</a></div>`
-      : '';
-    return `<div class="sidebar-content">${renderProfilePanel()}${renderAllLessonsNav(lesson)}${renderTocNav(lesson)}${pdfActions}</div>`;
+    return `<div class="sidebar-content">${renderProfilePanel()}${renderAllLessonsNav(lesson)}${renderTocNav(lesson)}</div>`;
   }
 
   function renderBlock(block) {
@@ -474,8 +468,7 @@
   }
 
   function renderPdfSupplement(lesson) {
-    if (!lesson.pdf) return '';
-    return `<section class="lesson-section pdf-section" id="pdf-original" aria-labelledby="pdf-title"><h2 id="pdf-title">Documento original em PDF</h2><p class="pdf-explanation">A versão em HTML acima é a forma principal e acessível de estudar esta aula. O PDF é mantido como documento-fonte para consulta, conferência e impressão.</p><div class="pdf-actions"><a class="btn secondary" href="${escapeHTML(lesson.pdf)}" target="_blank" rel="noopener">Abrir PDF original <span class="sr-only">(abre em nova aba)</span></a><button class="btn secondary" type="button" data-load-pdf data-pdf-src="${escapeHTML(lesson.pdf)}">Carregar visualizador do PDF</button></div><div class="pdf-frame-slot" id="pdf-frame-slot" aria-live="polite"></div></section>`;
+    return '';
   }
 
   function renderLessonNotebook(lesson) {
@@ -503,7 +496,7 @@
   }
 
   function renderLessonMeta(lesson) {
-    return `<dl class="lesson-facts" aria-label="Informações da aula"><div><dt>Leitura</dt><dd>≈ ${readingMinutes(lesson)} min</dd></div><div><dt>Capítulos</dt><dd>${(lesson.secoes || []).length}</dd></div><div><dt>Recursos visuais</dt><dd>${(lesson.imagens || []).length}</dd></div><div><dt>Documento</dt><dd>${lesson.pdf ? 'PDF disponível' : 'Sem PDF'}</dd></div></dl>`;
+    return `<dl class="lesson-facts" aria-label="Informações da aula"><div><dt>Leitura</dt><dd>≈ ${readingMinutes(lesson)} min</dd></div><div><dt>Capítulos</dt><dd>${(lesson.secoes || []).length}</dd></div><div><dt>Recursos visuais</dt><dd>${(lesson.imagens || []).length}</dd></div><div><dt>Formato</dt><dd>Texto HTML</dd></div></dl>`;
   }
 
   function renderLesson() {
@@ -529,14 +522,13 @@
     root.innerHTML = `
       <div class="progress-track" aria-hidden="true"><div class="progress-bar" id="reading-progress"></div></div>
       <header class="lesson-hero"><div class="container"><nav class="breadcrumbs" aria-label="Navegação estrutural"><a href="index.html">Formações</a><span aria-hidden="true">/</span><span>Aula ${escapeHTML(lesson.numero)}</span></nav><p class="eyebrow">Aula ${escapeHTML(lesson.numero)} · ${escapeHTML(lesson.eixo)}</p><h1>${escapeHTML(lesson.titulo)}</h1><p class="lesson-subtitle">${escapeHTML(lesson.subtitulo)}</p><div class="lesson-badges"><span class="pill">${escapeHTML(lesson.statusLabel)}</span>${proposed}</div>${renderLessonMeta(lesson)}<div class="lesson-hero-actions"><button class="btn secondary mobile-nav-button" type="button" data-sidebar-open aria-haspopup="dialog" aria-controls="mobile-sidebar" aria-expanded="false">Menu da aula</button><button class="btn secondary" type="button" data-reading-mode aria-pressed="false">Modo leitura</button>${continueAction}</div></div></header>
-      <main class="container lesson-shell" id="conteudo-aula"><aside class="lesson-sidebar" aria-label="Navegação lateral da formação">${renderSidebar(lesson)}</aside><article class="lesson-main" aria-labelledby="lesson-reading-title"><h2 class="sr-only" id="lesson-reading-title">Conteúdo da Aula ${escapeHTML(lesson.numero)}</h2><div class="lead-card"><p>${escapeHTML(lesson.resumo)}</p><p class="accessibility-note"><strong>Leitura acessível:</strong> o conteúdo essencial está em texto HTML. As imagens são apoio visual e o PDF permanece como documento original.</p></div>${cover}${renderLessonSections(lesson)}${renderPdfSupplement(lesson)}${renderLessonNotebook(lesson)}<section class="completion" id="completion-box" aria-labelledby="progress-title"><h2 id="progress-title">Meu progresso</h2><p>Conclusão, progresso e anotações ficam vinculados ao perfil local <strong>${escapeHTML(getActiveProfile().nome)}</strong>.</p><button class="btn" id="complete-button" type="button">Marcar aula como concluída</button></section>${renderLessonPager(lesson)}</article></main>${mobileSidebar}`;
+      <main class="container lesson-shell" id="conteudo-aula"><aside class="lesson-sidebar" aria-label="Navegação lateral da formação">${renderSidebar(lesson)}</aside><article class="lesson-main" aria-labelledby="lesson-reading-title"><h2 class="sr-only" id="lesson-reading-title">Conteúdo da Aula ${escapeHTML(lesson.numero)}</h2><div class="lead-card"><p>${escapeHTML(lesson.resumo)}</p><p class="accessibility-note"><strong>Leitura acessível:</strong> o conteúdo essencial está em texto HTML. As imagens entram apenas como apoio visual.</p></div>${cover}${renderLessonSections(lesson)}${renderLessonNotebook(lesson)}<section class="completion" id="completion-box" aria-labelledby="progress-title"><h2 id="progress-title">Meu progresso</h2><p>Conclusão, progresso e anotações ficam vinculados ao perfil local <strong>${escapeHTML(getActiveProfile().nome)}</strong>.</p><button class="btn" id="complete-button" type="button">Marcar aula como concluída</button></section>${renderLessonPager(lesson)}</article></main>${mobileSidebar}`;
 
     bindProfiles();
     bindProgress(lesson);
     bindGallery(lesson);
     bindCompletion(lesson);
     bindMobileSidebar();
-    bindPdfViewer(lesson);
     bindActiveSection(lesson);
     bindNotes(lesson);
     bindReadingMode();
@@ -623,30 +615,6 @@
     dialog.addEventListener('close', () => openButton.setAttribute('aria-expanded', 'false'));
     dialog.addEventListener('click', event => { if (event.target === dialog) closeDialog(dialog, openButton); });
     $$('a[href^="#"]', dialog).forEach(link => link.addEventListener('click', () => closeDialog(dialog, openButton)));
-  }
-
-  function bindPdfViewer(lesson) {
-    const button = $('[data-load-pdf]');
-    const slot = $('#pdf-frame-slot');
-    if (!button || !slot || !lesson.pdf) return;
-    button.addEventListener('click', () => {
-      if (slot.dataset.loaded === 'true') {
-        slot.hidden = !slot.hidden;
-        button.textContent = slot.hidden ? 'Mostrar visualizador do PDF' : 'Ocultar visualizador do PDF';
-        button.setAttribute('aria-expanded', slot.hidden ? 'false' : 'true');
-        return;
-      }
-      const iframe = document.createElement('iframe');
-      iframe.className = 'pdf-frame';
-      iframe.src = lesson.pdf;
-      iframe.title = `PDF original da Aula ${lesson.numero} — ${lesson.titulo}`;
-      iframe.loading = 'lazy';
-      slot.append(iframe);
-      slot.dataset.loaded = 'true';
-      slot.hidden = false;
-      button.textContent = 'Ocultar visualizador do PDF';
-      button.setAttribute('aria-expanded', 'true');
-    });
   }
 
   function bindActiveSection(lesson) {
