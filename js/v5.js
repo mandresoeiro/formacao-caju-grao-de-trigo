@@ -497,6 +497,47 @@
     whatsapp.hidden = false;
   }
 
+
+  function initStudentSignupTools() {
+    const form = $('[data-student-form]');
+    if (!form) return;
+    const status = $('[data-student-status]');
+    const submitButton = $('[type="submit"]', form);
+
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      const fd = new FormData(form);
+      const data = {
+        name: String(fd.get('name') || '').trim(),
+        contact: String(fd.get('contact') || '').trim(),
+        group: String(fd.get('group') || '').trim(),
+        interest: String(fd.get('interest') || '').trim(),
+        note: String(fd.get('note') || '').trim()
+      };
+      if (!data.name || !data.contact) {
+        if (status) status.textContent = 'Preencha pelo menos nome e WhatsApp ou e-mail.';
+        return;
+      }
+      if (window.CAJU_FIREBASE?.whenReady) await window.CAJU_FIREBASE.whenReady;
+      if (!window.CAJU_FIREBASE?.ready) {
+        if (status) status.textContent = 'Cadastro ainda não pôde ser enviado. Confira se o Firestore foi criado e as regras foram publicadas.';
+        return;
+      }
+      if (submitButton) submitButton.disabled = true;
+      if (status) status.textContent = 'Enviando cadastro…';
+      try {
+        await window.CAJU_FIREBASE.saveStudent(data);
+        if (status) status.textContent = 'Cadastro enviado com sucesso. A coordenação já pode ver no Firebase.';
+        form.reset();
+      } catch (error) {
+        if (status) status.textContent = 'Não foi possível enviar o cadastro agora. Confira as regras do Firestore e tente novamente.';
+        console.warn(error);
+      } finally {
+        if (submitButton) submitButton.disabled = false;
+      }
+    });
+  }
+
   function initContactTools() {
     const form = $('[data-contact-form]');
     if (!form) return;
@@ -691,6 +732,7 @@
   initSpotify();
   enhanceNotebookPrivacy();
   enhanceHomeSidebarMusicLink();
+  initStudentSignupTools();
   initContactTools();
   initFeedbackTools();
   initNextMeeting();

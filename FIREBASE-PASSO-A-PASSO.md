@@ -20,6 +20,7 @@ No painel do Firebase:
 
 Depois disso, o site poderá salvar:
 
+- cadastros de alunos na coleção `students`;
 - mensagens de contato na coleção `contacts`;
 - feedbacks na coleção `feedback`.
 
@@ -32,6 +33,11 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
+    match /students/{document} {
+      allow create: if true;
+      allow read, update, delete: if false;
+    }
+
     match /contacts/{document} {
       allow create: if true;
       allow read, update, delete: if false;
@@ -45,7 +51,7 @@ service cloud.firestore {
 }
 ```
 
-Essas regras permitem que visitantes enviem contato e feedback, mas não permitem ler, editar ou apagar os dados pelo site.
+Essas regras permitem que visitantes façam cadastro, enviem contato e feedback, mas não permitem ler, editar ou apagar os dados pelo site.
 
 ## 4. Onde ver as respostas
 
@@ -53,4 +59,4 @@ No Firebase:
 
 1. Vá em **Firestore Database**.
 2. Abra a aba **Dados**.
-3. Veja as coleções `contacts` e `feedback`.
+3. Veja as coleções `students`, `contacts` e `feedback`.

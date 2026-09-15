@@ -237,6 +237,7 @@
         <a class="home-nav-link" href="#comecar"><span aria-hidden="true">01</span> Começar</a>
         <a class="home-nav-link" href="#aulas"><span aria-hidden="true">▦</span> Aulas</a>
         <a class="home-nav-link" href="#buscar-title"><span aria-hidden="true">⌕</span> Buscar</a>
+        <a class="home-nav-link" href="#cadastro"><span aria-hidden="true">✓</span> Cadastro</a>
         <a class="home-nav-link" href="#contato"><span aria-hidden="true">✉</span> Contato</a>
         <details class="sidebar-more">
           <summary>Mais opções</summary>

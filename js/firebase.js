@@ -23,6 +23,19 @@ function basePayload(type) {
   };
 }
 
+
+async function saveStudent(input = {}) {
+  assertReady();
+  return firebaseTools.addDoc(firebaseTools.collection(db, 'students'), {
+    ...basePayload('student'),
+    name: cleanText(input.name, 90) || 'Não informado',
+    contact: cleanText(input.contact, 120),
+    group: cleanText(input.group, 100),
+    interest: cleanText(input.interest, 80) || 'Participar da formação',
+    note: cleanText(input.note, 500)
+  });
+}
+
 async function saveContact(input = {}) {
   assertReady();
   return firebaseTools.addDoc(firebaseTools.collection(db, 'contacts'), {
@@ -49,6 +62,7 @@ window.CAJU_FIREBASE = {
   loading: configured,
   error: '',
   whenReady: Promise.resolve(false),
+  saveStudent,
   saveContact,
   saveFeedback
 };

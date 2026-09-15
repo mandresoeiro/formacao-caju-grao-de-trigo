@@ -10,14 +10,14 @@
   <meta property="og:type" content="website">
   <title>Formação CAJU - Grão de Trigo — Caminho de Formação</title>
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/styles.css?v=no-pdf">
-  <script defer src="js/config.js?v=no-pdf"></script>
+  <link rel="stylesheet" href="css/styles.css?v=students1">
+  <script defer src="js/config.js?v=students1"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script defer src="js/supabase.js?v=no-pdf"></script>
-  <script defer src="js/data.js?v=no-pdf"></script>
-  <script defer src="js/app.js?v=no-pdf"></script>
-  <script defer src="js/v5.js?v=no-pdf"></script>
-  <script type="module" src="js/firebase.js?v=no-pdf"></script>
+  <script defer src="js/supabase.js?v=students1"></script>
+  <script defer src="js/data.js?v=students1"></script>
+  <script defer src="js/app.js?v=students1"></script>
+  <script defer src="js/v5.js?v=students1"></script>
+  <script type="module" src="js/firebase.js?v=students1"></script>
 </head>
 <body class="home-page">
   <a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
@@ -152,6 +152,46 @@
           <li><strong>Menu móvel</strong><span>No celular e tablet, a navegação abre em um painel próprio.</span></li>
           <li><strong>Texto em primeiro lugar</strong><span>As aulas ficam em HTML para facilitar leitura, busca e acessibilidade.</span></li>
         </ul>
+      </section>
+
+
+      <section class="contact-section student-signup-section" id="cadastro" aria-labelledby="student-title">
+        <div class="contact-copy">
+          <p class="eyebrow">Cadastro do aluno</p>
+          <h2 id="student-title">Entre na formação</h2>
+          <p>Preencha um cadastro simples para a coordenação saber quem está acompanhando as aulas. Depois do envio, seus dados aparecem no Firebase.</p>
+          <p class="firebase-status" data-student-status aria-live="polite">Informe nome e contato para confirmar sua participação.</p>
+        </div>
+
+        <form class="contact-form" data-student-form>
+          <div class="contact-form-grid">
+            <label for="student-name">Nome completo
+              <input id="student-name" name="name" type="text" autocomplete="name" maxlength="90" placeholder="Ex.: Maria Silva" required>
+            </label>
+            <label for="student-contact">WhatsApp ou e-mail
+              <input id="student-contact" name="contact" type="text" autocomplete="email" maxlength="120" placeholder="Ex.: (85) 99999-9999 ou nome@email.com" required>
+            </label>
+          </div>
+          <div class="contact-form-grid">
+            <label for="student-group">Grupo, pastoral ou comunidade
+              <input id="student-group" name="group" type="text" maxlength="100" placeholder="Ex.: Crisma, Grupo A, Comunidade CAJU">
+            </label>
+            <label for="student-interest">Interesse principal
+              <select id="student-interest" name="interest">
+                <option value="Participar da formação">Participar da formação</option>
+                <option value="Receber avisos das aulas">Receber avisos das aulas</option>
+                <option value="Tirar dúvidas">Tirar dúvidas</option>
+                <option value="Ajudar na organização">Ajudar na organização</option>
+              </select>
+            </label>
+          </div>
+          <label for="student-note">Observação opcional
+            <textarea id="student-note" name="note" rows="4" maxlength="500" placeholder="Escreva algo que a coordenação precise saber."></textarea>
+          </label>
+          <div class="contact-actions">
+            <button class="btn" type="submit">Fazer cadastro</button>
+          </div>
+        </form>
       </section>
 
       <section class="contact-section" id="contato" aria-labelledby="contact-title">
