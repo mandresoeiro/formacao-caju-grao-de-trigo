@@ -529,8 +529,11 @@
         if (status) status.textContent = "Enviando cadastro…";
         try {
           await window.CAJU_FIREBASE.saveStudent(data);
-          if (status) status.textContent = "Cadastro enviado com sucesso. A coordenação já pode ver no Firebase.";
+          const registered = { ...data, registeredAt: Date.now() };
+          localStorage.setItem('caju-student-registration-v1', JSON.stringify(registered));
+          if (status) status.textContent = "Cadastro enviado com sucesso. Abrindo sua área do aluno…";
           form.reset();
+          window.location.href = 'aluno.html';
         } catch (error) {
           if (status) status.textContent = "Não foi possível enviar o cadastro agora. Confira as regras do Firestore e tente novamente.";
           console.warn(error);
