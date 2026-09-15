@@ -148,26 +148,45 @@
   function renderProfilePanel() {
     const profiles = getProfiles();
     const active = getActiveProfileId();
-    return `<section class="student-panel" aria-label="Perfil local do aluno">
+    return `<section class="student-panel" aria-label="Cadastro e progresso do aluno">
       <div class="student-panel-title-row">
-        <h2 class="sidebar-heading">Perfil local</h2>
-        <span class="local-badge">neste aparelho</span>
+        <h2 class="sidebar-heading">Aluno</h2>
+        <span class="local-badge">cadastro + progresso</span>
       </div>
-      <label class="student-label">Aluno atual
+      <p class="student-help student-help-strong">Se ainda não fez, preencha o cadastro rápido. O envio aparece no Firebase para a coordenação.</p>
+      <form class="sidebar-signup" data-student-form data-compact-student-form>
+        <label>Nome completo
+          <input name="name" type="text" maxlength="90" required autocomplete="name" placeholder="Seu nome">
+        </label>
+        <label>WhatsApp ou e-mail
+          <input name="contact" type="text" maxlength="120" required autocomplete="email" placeholder="Seu contato">
+        </label>
+        <label>Grupo ou comunidade
+          <input name="group" type="text" maxlength="100" placeholder="Opcional">
+        </label>
+        <input type="hidden" name="interest" value="Participar da formação">
+        <input type="hidden" name="note" value="Cadastro rápido pelo painel do aluno">
+        <button class="btn compact" type="submit">Fazer cadastro</button>
+        <p class="sidebar-signup-status" data-student-status aria-live="polite">Cadastro rápido para novos alunos.</p>
+      </form>
+      <div class="student-local-box">
+        <label class="student-label">Progresso neste aparelho
         <select class="student-select" data-profile-select>
           ${profiles.map(p => `<option value="${escapeHTML(p.id)}"${p.id === active ? ' selected' : ''}>${escapeHTML(p.nome)}</option>`).join('')}
         </select>
-      </label>
-      <details class="profile-create">
-        <summary>Adicionar outro aluno</summary>
+        </label>
+        <details class="profile-create">
+        <summary>Adicionar outro perfil local</summary>
         <form data-profile-form>
           <label>Nome ou apelido
             <input name="name" type="text" maxlength="40" required autocomplete="off" placeholder="Ex.: Ana, João, Grupo A">
           </label>
           <button class="btn compact" type="submit">Criar perfil</button>
         </form>
-      </details>
-      <p class="student-help">Progresso e anotações ficam separados por perfil neste navegador.</p>
+        </details>
+        <p class="student-help">Este perfil guarda progresso e anotações somente neste navegador.</p>
+      </div>
+      <a class="sidebar-full-signup" href="#cadastro">Ver cadastro completo</a>
     </section>`;
   }
 

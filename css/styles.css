@@ -2681,3 +2681,71 @@ textarea {
     padding-inline: .55rem;
   }
 }
+
+.student-help-strong {
+  margin-top: .7rem;
+  color: var(--text);
+  font-size: .78rem;
+}
+
+.sidebar-signup {
+  display: grid;
+  gap: .55rem;
+  margin-top: .7rem;
+  padding: .65rem;
+  border: 1px solid color-mix(in srgb, var(--gold) 42%, var(--line));
+  border-radius: .85rem;
+  background: color-mix(in srgb, var(--gold) 8%, var(--surface));
+}
+
+.sidebar-signup label {
+  display: grid;
+  gap: .3rem;
+  color: var(--text);
+  font-size: .74rem;
+  font-weight: 800;
+}
+
+.sidebar-signup input {
+  width: 100%;
+  min-height: 42px;
+  padding: .55rem .65rem;
+  border: 1px solid var(--line);
+  border-radius: .65rem;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+}
+
+.sidebar-signup-status {
+  margin: 0;
+  color: var(--muted);
+  font-size: .7rem;
+  line-height: 1.35;
+}
+
+.student-local-box {
+  margin-top: .75rem;
+  padding-top: .7rem;
+  border-top: 1px solid var(--line);
+}
+
+.sidebar-full-signup {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 40px;
+  margin-top: .65rem;
+  border: 1px solid var(--line);
+  border-radius: .7rem;
+  color: var(--gold-strong);
+  text-decoration: none;
+  font-size: .74rem;
+  font-weight: 850;
+}
+
+.sidebar-full-signup:hover {
+  background: var(--surface-2);
+  border-color: var(--gold);
+}
