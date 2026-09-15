@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Biblioteca leve e acessível de formação católica da Comunidade CAJU - Grão de Trigo, com aulas em HTML, imagens otimizadas e PDFs originais.">
+  <meta name="theme-color" content="#071f32">
+  <meta property="og:title" content="Formação CAJU - Grão de Trigo — Caminho de Formação">
+  <meta property="og:description" content="Aulas de formação católica em uma biblioteca acessível, progressiva e leve.">
+  <meta property="og:type" content="website">
+  <title>Formação CAJU - Grão de Trigo — Caminho de Formação</title>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="js/config.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="js/supabase.js"></script>
+  <script defer src="js/data.js"></script>
+  <script defer src="js/app.js"></script>
+  <script defer src="js/v5.js"></script>
+  <script type="module" src="js/firebase.js"></script>
+</head>
+<body class="home-page">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
+
+  <header class="site-header">
+    <div class="container header-row">
+      <a class="brand" href="index.html" aria-label="Formação CAJU - Grão de Trigo — página inicial">
+        <span class="brand-mark" aria-hidden="true">✦</span>
+        <span class="brand-text"><strong>CAJU</strong> <span class="brand-separator">-</span> Grão de Trigo</span>
+      </a>
+
+      <div class="header-actions" aria-label="Preferências e navegação">
+        <button class="icon-btn home-menu-button" type="button" data-home-sidebar-open aria-haspopup="dialog" aria-controls="home-mobile-sidebar" aria-expanded="false">
+          <span aria-hidden="true">☰</span> <span class="text-label">Menu</span>
+        </button>
+        <button class="icon-btn" type="button" data-action="font-minus" aria-label="Diminuir tamanho do texto">A−</button>
+        <button class="icon-btn" type="button" data-action="font-plus" aria-label="Aumentar tamanho do texto">A+</button>
+        <button class="icon-btn" type="button" data-action="theme" aria-label="Alternar tema claro e escuro" aria-pressed="false">◐ <span class="text-label">Tema</span></button>
+        <span id="header-account-slot" class="header-account-slot"></span>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo" class="container home-shell">
+    <aside class="home-sidebar" aria-label="Navegação principal da biblioteca">
+      <div id="home-sidebar-content"></div>
+    </aside>
+
+    <div class="home-main">
+      <section class="home-hero" aria-labelledby="home-title">
+        <div class="home-hero-copy">
+          <p class="eyebrow">Formação · espiritualidade · vida cristã</p>
+          <h1 id="home-title">Caminho de Formação</h1>
+          <p class="home-hero-lead">Uma biblioteca viva para estudar com calma: texto acessível, apoio visual e o PDF original sempre preservado.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#aulas">Explorar aulas</a>
+            <a class="btn secondary" href="#contato">Contato e sugestões</a>
+            <span id="continue-study-slot"></span>
+          </div>
+          <dl class="home-stats" aria-label="Resumo da biblioteca">
+            <div><dt id="stat-lessons">8</dt><dd>aulas cadastradas</dd></div>
+            <div><dt id="stat-published">5</dt><dd>disponíveis</dd></div>
+            <div><dt id="stat-pdfs">5</dt><dd>PDFs originais</dd></div>
+          </dl>
+        </div>
+
+        <figure class="home-hero-visual">
+          <div class="hero-image-frame" id="home-featured-image"></div>
+          <figcaption>
+            <span class="hero-visual-kicker">Em destaque</span>
+            <strong>Aula 04 — A Ascensão ao Altar</strong>
+            <span>O mistério da Eucaristia apresentado em leitura acessível e apoio visual.</span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="home-highlight-grid" aria-label="Destaques do site">
+        <article>
+          <span aria-hidden="true">✓</span>
+          <strong>Feito para celular</strong>
+          <p>Menu compacto, botões grandes e leitura confortável em telas pequenas.</p>
+        </article>
+        <article>
+          <span aria-hidden="true">♫</span>
+          <strong>Ambiente de oração</strong>
+          <p>Playlist integrada para acompanhar estudo, silêncio e encontros.</p>
+        </article>
+        <article>
+          <span aria-hidden="true">✉</span>
+          <strong>Contato direto</strong>
+          <p>Visitantes podem enviar dúvidas, sugestões e pedidos de reunião.</p>
+        </article>
+      </section>
+
+      <section class="home-intro-strip" aria-label="Como usar a biblioteca">
+        <div><span class="intro-icon" aria-hidden="true">01</span><strong>Leia no site</strong><small>Conteúdo em HTML para pesquisa, teclado e leitor de tela.</small></div>
+        <div><span class="intro-icon" aria-hidden="true">02</span><strong>Veja as artes</strong><small>Imagens otimizadas como apoio visual, sem substituir o texto.</small></div>
+        <div><span class="intro-icon" aria-hidden="true">03</span><strong>Consulte o original</strong><small>O PDF de cada aula permanece disponível para conferência.</small></div>
+      </section>
+
+      <section class="start-section" id="comecar" aria-labelledby="start-title">
+        <div class="start-copy">
+          <p class="eyebrow">Por onde começar</p>
+          <h2 id="start-title">Um caminho simples para estudar melhor</h2>
+          <p>Escolha uma aula disponível, leia o conteúdo no site e use o caderno da aula para guardar dúvidas, reflexões e sugestões. O progresso fica salvo neste aparelho.</p>
+        </div>
+        <div class="start-steps" aria-label="Passos sugeridos de estudo">
+          <article>
+            <span aria-hidden="true">1</span>
+            <h3>Comece pela leitura</h3>
+            <p>O texto principal já está preparado para celular, tablet, teclado e leitor de tela.</p>
+          </article>
+          <article>
+            <span aria-hidden="true">2</span>
+            <h3>Anote o essencial</h3>
+            <p>Cada seção tem espaço para registrar dúvidas, oração pessoal e pontos para rever depois.</p>
+          </article>
+          <article>
+            <span aria-hidden="true">3</span>
+            <h3>Conclua a aula</h3>
+            <p>Marque a conclusão quando terminar e volte depois pelo botão de continuar estudo.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="spotify-section" id="musica" aria-labelledby="spotify-title">
+        <div class="spotify-card">
+          <div class="spotify-art" aria-hidden="true">
+            <span class="spotify-cross">✝</span>
+            <span class="spotify-ring spotify-ring-one"></span>
+            <span class="spotify-ring spotify-ring-two"></span>
+            <span class="spotify-notes">♪ ♫</span>
+          </div>
+          <div class="spotify-copy">
+            <p class="eyebrow">Trilha de oração</p>
+            <h2 id="spotify-title">Playlist Católica</h2>
+            <p id="spotify-subtitle">Uma única playlist para acompanhar oração, estudo e momentos de silêncio.</p>
+            <div id="spotify-widget" class="spotify-widget" aria-live="polite"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="access-section" id="acessibilidade" aria-labelledby="access-title">
+        <div>
+          <p class="eyebrow">Acessibilidade</p>
+          <h2 id="access-title">Feito para estudar em qualquer tela</h2>
+          <p>O site prioriza texto em HTML, contraste, foco visível, botões grandes e navegação por teclado. As imagens complementam o conteúdo, mas não substituem a explicação.</p>
+        </div>
+        <ul class="access-list">
+          <li><strong>Ajuste de texto</strong><span>Use A− e A+ no topo para adaptar a leitura.</span></li>
+          <li><strong>Tema claro/escuro</strong><span>Alterne o tema conforme a iluminação do ambiente.</span></li>
+          <li><strong>Menu móvel</strong><span>No celular e tablet, a navegação abre em um painel próprio.</span></li>
+          <li><strong>PDF preservado</strong><span>O documento original continua disponível para conferência.</span></li>
+        </ul>
+      </section>
+
+      <section class="contact-section" id="contato" aria-labelledby="contact-title">
+        <div class="contact-copy">
+          <p class="eyebrow">Contato</p>
+          <h2 id="contact-title">Sugestões, dúvidas e reuniões</h2>
+          <p>Use este espaço para preparar uma sugestão de melhoria, pedir ajuda com uma aula ou solicitar uma conversa com a coordenação da formação.</p>
+          <div class="contact-options" aria-label="Canais de contato configurados">
+            <a class="contact-option" data-contact-email-link href="#" hidden>E-mail da formação</a>
+            <a class="contact-option" data-whatsapp-link href="#" target="_blank" rel="noopener" hidden>WhatsApp</a>
+            <a class="contact-option" data-calendar-link href="#" target="_blank" rel="noopener" hidden>Agendar reunião</a>
+            <a class="contact-option" data-credit-link href="#" target="_blank" rel="noopener" hidden>Site da SoeiroTech</a>
+          </div>
+          <p class="firebase-status" data-firebase-status>Envie sua mensagem. Ela será recebida com segurança.</p>
+        </div>
+
+        <form class="contact-form" data-contact-form>
+          <div class="contact-form-grid">
+            <label for="contact-name">Seu nome
+              <input id="contact-name" name="name" type="text" autocomplete="name" maxlength="70" placeholder="Ex.: Maria, João, Grupo A">
+            </label>
+            <label for="contact-kind">Tipo de contato
+              <select id="contact-kind" name="kind">
+                <option value="Sugestão de melhoria">Sugestão de melhoria</option>
+                <option value="Dúvida sobre aula">Dúvida sobre aula</option>
+                <option value="Pedido de reunião">Pedido de reunião</option>
+                <option value="Problema no site">Problema no site</option>
+              </select>
+            </label>
+          </div>
+          <label for="contact-message">Mensagem
+            <textarea id="contact-message" name="message" rows="7" maxlength="1200" placeholder="Escreva aqui sua sugestão, dúvida ou pedido de reunião."></textarea>
+          </label>
+          <div class="contact-actions">
+            <button class="btn" type="submit">Enviar para o site</button>
+            <button class="btn" type="button" data-contact-copy>Copiar mensagem</button>
+            <a class="btn secondary" data-contact-mailto href="#" hidden>Enviar por e-mail</a>
+          </div>
+          <p class="contact-status" data-contact-status aria-live="polite">A mensagem fica neste aparelho até você copiar ou enviar por um canal configurado.</p>
+        </form>
+      </section>
+
+      <section class="feedback-section" id="feedback" aria-labelledby="feedback-title">
+        <div class="feedback-copy">
+          <p class="eyebrow">Interação</p>
+          <h2 id="feedback-title">Como foi sua experiência?</h2>
+          <p>Uma resposta rápida ajuda a perceber se o site está claro, bonito e fácil de usar. Este retorno fica salvo neste aparelho.</p>
+        </div>
+        <form class="feedback-form" data-feedback-form>
+          <fieldset>
+            <legend>Escolha uma opção</legend>
+            <label><input type="radio" name="rating" value="Gostei muito"> Gostei muito</label>
+            <label><input type="radio" name="rating" value="Está bom"> Está bom</label>
+            <label><input type="radio" name="rating" value="Pode melhorar"> Pode melhorar</label>
+          </fieldset>
+          <fieldset class="feedback-tags">
+            <legend>O que chamou sua atenção?</legend>
+            <label><input type="checkbox" name="tags" value="Fácil de usar"> Fácil de usar</label>
+            <label><input type="checkbox" name="tags" value="Bonito"> Bonito</label>
+            <label><input type="checkbox" name="tags" value="Bom no celular"> Bom no celular</label>
+            <label><input type="checkbox" name="tags" value="Texto grande demais"> Texto grande demais</label>
+            <label><input type="checkbox" name="tags" value="Faltou conteúdo"> Faltou conteúdo</label>
+            <label><input type="checkbox" name="tags" value="Tive dificuldade"> Tive dificuldade</label>
+          </fieldset>
+          <label for="feedback-note">Comentário rápido
+            <textarea id="feedback-note" name="note" rows="4" maxlength="500" placeholder="O que você achou? Algo ficou difícil de usar?"></textarea>
+          </label>
+          <button class="btn" type="submit">Salvar feedback</button>
+          <p class="feedback-status" data-feedback-status aria-live="polite">Nenhuma resposta salva ainda.</p>
+        </form>
+      </section>
+
+      <section class="journey-section" id="jornada" aria-labelledby="journey-title">
+        <div class="journey-copy">
+          <p class="eyebrow">Sua jornada</p>
+          <h2 id="journey-title">Acompanhe seu caminho de formação</h2>
+          <p>Veja quantas aulas já foram concluídas neste aparelho e continue com mais clareza, sem perder o ponto onde parou.</p>
+          <div class="journey-actions">
+            <a class="btn" href="#aulas">Continuar formação</a>
+            <a class="btn secondary" href="#contato">Pedir ajuda</a>
+          </div>
+        </div>
+        <div class="journey-panel" aria-label="Resumo do progresso da formação">
+          <span class="journey-label">Progresso geral</span>
+          <strong id="journey-percent">0%</strong>
+          <div class="journey-bar" aria-hidden="true"><span id="journey-bar-fill"></span></div>
+          <p id="journey-summary">Comece uma aula para ver seu avanço aqui.</p>
+          <small>O progresso é salvo localmente neste aparelho.</small>
+        </div>
+      </section>
+
+      <section class="next-section" id="proximo" aria-labelledby="next-title">
+        <div>
+          <p class="eyebrow">Agenda</p>
+          <h2 id="next-title" data-next-title>Próximo encontro da formação</h2>
+          <p data-next-info>Data e horário a confirmar pela coordenação.</p>
+        </div>
+        <div class="next-card">
+          <span class="next-icon" aria-hidden="true">📅</span>
+          <strong data-next-location>Local a confirmar.</strong>
+          <p>Use o contato para pedir aviso da próxima data, sugerir horário ou marcar uma conversa.</p>
+          <div class="next-actions">
+            <a class="btn" href="#contato">Enviar mensagem</a>
+            <a class="btn secondary" data-next-calendar href="#" target="_blank" rel="noopener" hidden>Abrir agenda</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="experience-section" id="experiencias" aria-labelledby="experience-title">
+        <div class="section-heading-row">
+          <div>
+            <p class="eyebrow">Experiências</p>
+            <h2 class="section-title" id="experience-title">O que o site facilita para as pessoas</h2>
+          </div>
+          <p class="section-support">Pequenas melhorias que tornam a formação mais acolhedora no celular, tablet e desktop.</p>
+        </div>
+        <div class="experience-grid">
+          <article>
+            <span aria-hidden="true">↻</span>
+            <h3>Voltar de onde parou</h3>
+            <p>O aluno pode continuar a leitura pelo progresso salvo e revisar o material com mais tranquilidade.</p>
+          </article>
+          <article>
+            <span aria-hidden="true">✍</span>
+            <h3>Registrar sugestões</h3>
+            <p>O formulário ajuda a organizar dúvidas, ideias de melhoria e pedidos de reunião antes do envio.</p>
+          </article>
+          <article>
+            <span aria-hidden="true">♫</span>
+            <h3>Estudar com oração</h3>
+            <p>A playlist cria um ambiente de silêncio e recolhimento durante o estudo da formação.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="faq-section" id="perguntas" aria-labelledby="faq-title">
+        <div class="section-heading-row">
+          <div>
+            <p class="eyebrow">Dúvidas rápidas</p>
+            <h2 class="section-title" id="faq-title">Perguntas frequentes</h2>
+          </div>
+          <p class="section-support">Respostas simples para quem está usando o site pela primeira vez.</p>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>Preciso instalar alguma coisa?</summary>
+            <p>Não. O site abre direto no navegador do celular, tablet ou computador.</p>
+          </details>
+          <details>
+            <summary>Minhas anotações são privadas?</summary>
+            <p>Sim. Por padrão, elas ficam salvas apenas neste aparelho. Se a conta online for configurada, o próprio site informa antes de sincronizar.</p>
+          </details>
+          <details>
+            <summary>Por que o Spotify toca só prévias no site?</summary>
+            <p>O player incorporado do Spotify pode limitar a reprodução. Para ouvir músicas completas, abra a playlist no Spotify e entre na sua conta.</p>
+          </details>
+          <details>
+            <summary>Como envio sugestão ou peço reunião?</summary>
+            <p>Use a área de contato para escrever a mensagem, copiar o texto e enviar pelo canal configurado pela coordenação.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="search-section" aria-labelledby="buscar-title">
+        <div class="search-heading">
+          <div>
+            <p class="eyebrow">Encontre rápido</p>
+            <h2 id="buscar-title">Buscar na formação</h2>
+          </div>
+          <p id="search-note" aria-live="polite">8 aulas cadastradas.</p>
+        </div>
+        <div class="search-panel home-search-panel">
+          <label class="search-label" for="lesson-search">Buscar aula, tema ou palavra-chave</label>
+          <div class="search-wrap">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <input id="lesson-search" type="search" autocomplete="off" placeholder="Ex.: Eucaristia, oração, virtudes, mandamentos">
+          </div>
+          <div id="deep-search-results" class="deep-search-results" hidden aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="section home-lessons-section" id="aulas" aria-labelledby="aulas-title">
+        <div class="section-heading-row">
+          <div>
+            <p class="eyebrow">Biblioteca em crescimento</p>
+            <h2 class="section-title" id="aulas-title">Aulas</h2>
+          </div>
+          <p class="section-support">Novas formações entram na mesma estrutura, sem precisar recriar o site.</p>
+        </div>
+        <div class="lesson-grid" id="lesson-grid"></div>
+        <noscript><p class="empty-state">Ative o JavaScript para usar busca, preferências de leitura e carregamento automático das aulas.</p></noscript>
+      </section>
+
+      <section class="growth-card" aria-labelledby="growth-title">
+        <div>
+          <p class="eyebrow">Projeto contínuo</p>
+          <h2 id="growth-title">Preparado para as próximas aulas</h2>
+          <p>Quando uma nova aula chegar, basta cadastrar o conteúdo, o PDF e as imagens. A navegação lateral, a busca e os cards são atualizados automaticamente.</p>
+        </div>
+        <div class="growth-sequence" aria-label="Exemplo de expansão">
+          <span>09</span><span>10</span><span>11</span><span>12</span><span aria-hidden="true">…</span>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <dialog class="mobile-sidebar-dialog home-mobile-sidebar" id="home-mobile-sidebar" aria-labelledby="home-mobile-sidebar-title">
+    <div class="mobile-sidebar-toolbar">
+      <h2 id="home-mobile-sidebar-title">Navegação</h2>
+      <button class="icon-btn" type="button" data-home-sidebar-close aria-label="Fechar navegação">Fechar</button>
+    </div>
+    <div class="mobile-sidebar-scroll" id="home-mobile-sidebar-content"></div>
+  </dialog>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <span><strong>Formação CAJU - Grão de Trigo</strong> · Biblioteca de formação</span>
+      <span>HTML · CSS · JavaScript · GitHub Pages</span>
+    </div>
+  </footer>
+
+  <nav class="mobile-bottom-nav" aria-label="Atalhos principais">
+    <a href="#conteudo"><span aria-hidden="true">⌂</span>Início</a>
+    <a href="#aulas"><span aria-hidden="true">▦</span>Aulas</a>
+    <a href="#contato"><span aria-hidden="true">✉</span>Contato</a>
+  </nav>
+</body>
+</html>
