@@ -14,6 +14,10 @@
   const message = document.querySelector('[data-student-area-message]');
 
   if (name) {
+    const firstName = name.split(/\s+/)[0] || name;
+    const title = document.querySelector('[data-student-area-title]');
+    if (title) title.textContent = `Bem-vindo(a), ${firstName}`;
+    document.title = `${firstName} | Área do aluno`;
     if (message) message.textContent = `${name}, seu cadastro foi recebido. Você pode continuar as aulas e acompanhar seu progresso neste aparelho.`;
     setText('[data-student-name]', data.name);
     setText('[data-student-contact]', data.contact);

@@ -148,12 +148,16 @@
   function renderProfilePanel() {
     const profiles = getProfiles();
     const active = getActiveProfileId();
-    return `<section class="student-panel" aria-label="Cadastro e progresso do aluno">
-      <div class="student-panel-title-row">
-        <h2 class="sidebar-heading">Aluno</h2>
-        <span class="local-badge">cadastro + progresso</span>
-      </div>
-      <p class="student-help student-help-strong">Se ainda não fez, preencha o cadastro rápido. O envio aparece no Firebase para a coordenação.</p>
+    const registration = readJSON('caju-student-registration-v1', {});
+    const registeredName = String(registration?.name || '').trim();
+    const firstName = registeredName.split(/\s+/)[0] || 'aluno';
+    const registrationBlock = registeredName
+      ? `<div class="student-welcome-mini">
+        <p class="student-help student-help-strong">Bem-vindo(a), <strong>${escapeHTML(firstName)}</strong>. Seu cadastro já foi recebido.</p>
+        <a class="btn compact" href="aluno.html">Abrir minha área</a>
+        <button class="link-button" type="button" data-clear-student-registration>Fazer cadastro de outra pessoa</button>
+      </div>`
+      : `<p class="student-help student-help-strong">Se ainda não fez, preencha o cadastro rápido. Depois do envio, você sai desta página e abre sua Área do aluno.</p>
       <form class="sidebar-signup" data-student-form data-compact-student-form>
         <label>Nome completo
           <input name="name" type="text" maxlength="90" required autocomplete="name" placeholder="Seu nome">
@@ -167,8 +171,14 @@
         <input type="hidden" name="interest" value="Participar da formação">
         <input type="hidden" name="note" value="Cadastro rápido pelo painel do aluno">
         <button class="btn compact" type="submit">Fazer cadastro</button>
-        <p class="sidebar-signup-status" data-student-status aria-live="polite">Cadastro rápido para novos alunos.</p>
-      </form>
+        <p class="sidebar-signup-status" data-student-status aria-live="polite">Ao cadastrar, abriremos sua área do aluno.</p>
+      </form>`;
+    return `<section class="student-panel" aria-label="Cadastro e progresso do aluno">
+      <div class="student-panel-title-row">
+        <h2 class="sidebar-heading">Aluno</h2>
+        <span class="local-badge">cadastro + progresso</span>
+      </div>
+      ${registrationBlock}
       <div class="student-local-box">
         <label class="student-label">Progresso neste aparelho
         <select class="student-select" data-profile-select>
@@ -191,6 +201,13 @@
   }
 
   function bindProfiles() {
+    $$('[data-clear-student-registration]').forEach(button => {
+      button.addEventListener('click', () => {
+        localStorage.removeItem('caju-student-registration-v1');
+        location.reload();
+      });
+    });
+
     $$('[data-profile-select]').forEach(select => {
       select.addEventListener('change', () => {
         localStorage.setItem(ACTIVE_PROFILE, select.value);

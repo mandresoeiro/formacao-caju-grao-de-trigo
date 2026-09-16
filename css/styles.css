@@ -2864,3 +2864,39 @@ textarea {
     grid-template-columns: 1fr;
   }
 }
+
+.student-welcome-mini {
+  display: grid;
+  gap: .65rem;
+  margin-top: .75rem;
+  padding: .75rem;
+  border: 1px solid color-mix(in srgb, #61d98b 45%, var(--line));
+  border-radius: .85rem;
+  background: color-mix(in srgb, #61d98b 9%, var(--surface));
+}
+
+.student-welcome-mini .btn {
+  width: 100%;
+}
+
+.link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  border: 0;
+  background: transparent;
+  color: var(--gold-strong);
+  cursor: pointer;
+  font: inherit;
+  font-size: .74rem;
+  font-weight: 850;
+  text-decoration: underline;
+  text-underline-offset: .18em;
+}
+
+.link-button:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: .45rem;
+}
