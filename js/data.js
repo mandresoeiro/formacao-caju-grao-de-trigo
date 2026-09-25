@@ -49,8 +49,8 @@ window.CAJU_AULAS = [
     resumo: 'A Eucaristia como fonte e ápice da vida da Igreja: presença real, transubstanciação, comunhão, reverência e frutos espirituais.',
     tema: 'dark',
     capa: {
-      src640: 'assets/img/aulas/04/slide-01-640.webp',
-      src1280: 'assets/img/aulas/04/slide-01-1280.webp',
+      src640: 'assets/fotos/aula-04/slide-01-640.webp',
+      src1280: 'assets/fotos/aula-04/slide-01-1280.webp',
       alt: 'Capa da formação A Ascensão ao Altar, em azul-marinho e dourado, com símbolo geométrico de hóstia e cálice.'
     },
     imagens: [
@@ -71,8 +71,8 @@ window.CAJU_AULAS = [
     ].map((item, idx) => ({
       titulo: item[0],
       descricao: item[1],
-      src640: `assets/img/aulas/04/slide-${String(idx + 2).padStart(2,'0')}-640.webp`,
-      src1280: `assets/img/aulas/04/slide-${String(idx + 2).padStart(2,'0')}-1280.webp`
+      src640: `assets/fotos/aula-04/slide-${String(idx + 2).padStart(2,'0')}-640.webp`,
+      src1280: `assets/fotos/aula-04/slide-${String(idx + 2).padStart(2,'0')}-1280.webp`
     })),
     secoes: [
       {
@@ -266,16 +266,16 @@ window.CAJU_AULAS = [
     resumo: 'Os Dez Mandamentos e os cinco preceitos eclesiásticos apresentados como colunas complementares da formação moral católica.',
     tema: 'light',
     capa: {
-      src640: 'assets/img/aulas/06/lei-de-deus-preceitos-640.webp',
-      src1280: 'assets/img/aulas/06/lei-de-deus-preceitos-1280.webp',
+      src640: 'assets/fotos/aula-06/lei-de-deus-preceitos-640.webp',
+      src1280: 'assets/fotos/aula-06/lei-de-deus-preceitos-1280.webp',
       alt: 'Infográfico em fundo claro comparando o Decálogo com os Mandamentos da Igreja.'
     },
     imagens: [
       {
         titulo: 'Lei de Deus e Preceitos da Igreja',
         descricao: 'Infográfico comparativo entre origem, duração e objetivo do Decálogo e dos preceitos eclesiásticos.',
-        src640: 'assets/img/aulas/06/lei-de-deus-preceitos-640.webp',
-        src1280: 'assets/img/aulas/06/lei-de-deus-preceitos-1280.webp'
+        src640: 'assets/fotos/aula-06/lei-de-deus-preceitos-640.webp',
+        src1280: 'assets/fotos/aula-06/lei-de-deus-preceitos-1280.webp'
       }
     ],
     secoes: [

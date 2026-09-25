@@ -86,8 +86,8 @@ Exemplo:
   resumo: 'Resumo curto da aula.',
   tema: 'dark',
   capa: {
-    src640: 'assets/img/aulas/09/capa-640.webp',
-    src1280: 'assets/img/aulas/09/capa-1280.webp',
+    src640: 'assets/fotos/aula-09/capa-640.webp',
+    src1280: 'assets/fotos/aula-09/capa-1280.webp',
     alt: 'Descrição objetiva da capa.'
   },
   imagens: [],
